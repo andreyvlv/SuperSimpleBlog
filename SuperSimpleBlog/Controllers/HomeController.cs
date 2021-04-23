@@ -43,6 +43,7 @@ namespace SuperSimpleBlog.Controllers
         {
             if (title != null)
             {
+                // Manage post to view, get post with Index.cshtml with property asp-route-title
                 Post post = await db.Posts.FirstOrDefaultAsync(p => p.Title == title);
                 if (post != null)
                     return View(post);
