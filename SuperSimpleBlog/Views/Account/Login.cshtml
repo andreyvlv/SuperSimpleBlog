@@ -1,0 +1,26 @@
+﻿@model SuperSimpleBlog.ViewModels.LoginViewModel
+
+<h2>Вход в приложение</h2>
+<div class="w-25">
+    <form method="post" asp-controller="Account" asp-action="Login"
+          asp-route-returnUrl="@Model.ReturnUrl">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label><br />
+            <input asp-for="Email" class="form-control"/>
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label"></label><br />
+            <input asp-for="Password" class="form-control"/>
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="form-group" style="display:inline-flex; padding-left:20px;">
+            <label asp-for="RememberMe" class="control-label"></label><br />
+            <input asp-for="RememberMe" class="form-check-input"/>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Войти" class="btn btn-outline-info btn-sm" style="border-radius:unset;"/>
+        </div>
+    </form>
+</div>

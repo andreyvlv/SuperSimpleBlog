@@ -1,0 +1,13 @@
+﻿@model string
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="name" class="control-label">Новая роль</label>
+        <input name="name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-outline-info" style="border-radius:unset;">Добавить</button>
+    </div>
+</form>

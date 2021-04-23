@@ -1,0 +1,80 @@
+﻿@model SuperSimpleBlog.Models.Post
+@{
+    ViewBag.Title = "Добавление поста";
+}
+<form asp-action="create" asp-controller="admin">
+    <div class="form-group">
+        <label asp-for="Title" class="control-label">Заголовок</label>
+        <input type="text" asp-for="Title" class="form-control" />
+    </div>
+    <hr />
+    <div class="form-group">
+        <label asp-for="Excerpt" class="control-label">Превью</label>
+        <textarea id="editor1" asp-for="Excerpt" rows="10" class="form-control"></textarea>
+        <script>
+            CKEDITOR.replace('editor1');
+        </script>
+        <hr />
+        <label asp-for="Content" class="control-label">Текст поста</label>
+        <textarea id="editor2" asp-for="Content" rows="20" class="form-control"></textarea>
+        <script>
+            //CKEDITOR.replace('editor2');
+            CKEDITOR.replace('editor2', {
+                height: 250,
+                // Adding Text and Background Color, Font Family and Size buttons to make sample
+                // text styling more spectacular.
+                extraPlugins: 'colorbutton,font',
+                // By default, some basic text styles buttons are removed in the Standard preset.
+                // The code below resets the default config.removeButtons setting.
+                removeButtons: '',
+                // Rearrange the toolbar slightly.
+                toolbarGroups: [{
+                    name: 'clipboard',
+                    groups: ['clipboard', 'undo']
+                },
+                {
+                    name: 'editing',
+                    groups: ['find', 'selection', 'spellchecker']
+                },
+                {
+                    name: 'links'
+                },
+                {
+                    name: 'insert'
+                },
+                {
+                    name: 'forms'
+                },
+                {
+                    name: 'tools'
+                },
+                {
+                    name: 'document',
+                    groups: ['mode', 'document', 'doctools']
+                },
+                {
+                    name: 'colors'
+                },
+                {
+                    name: 'others'
+                },
+                    '/',
+                {
+                    name: 'basicstyles',
+                    groups: ['basicstyles', 'cleanup']
+                },
+                {
+                    name: 'paragraph',
+                    groups: ['list', 'indent', 'blocks', 'align', 'bidi']
+                },
+                {
+                    name: 'styles'
+                }
+                ]
+            });
+        </script>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-outline-info btn-sm" style="border-radius:unset;" />
+    </div>
+</form>

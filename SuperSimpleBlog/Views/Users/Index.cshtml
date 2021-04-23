@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+@{
+    ViewBag.Title = "Список пользователей";
+}
+
+<a asp-action="Create" class="btn btn-outline-info btn-block" style="border-radius:unset;">Добавить пользователя</a>
+
+<table class="table">
+    <thead>
+        <tr>
+        <th>Email</th>       
+        <th>Действия</th></tr>
+    </thead>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Email</td>
+            <td>
+                <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+                    <a class="btn btn-outline-info" style="border-radius:unset;" asp-action="Edit" asp-route-id="@user.Id">Изменить</a>
+                    <a class="btn btn-outline-info" style="border-radius:unset;" asp-action="ChangePassword" asp-route-id="@user.Id">Сменить пароль</a>
+                    <button type="submit" class="btn btn-outline-danger" style="border-radius:unset;">
+                        Удалить
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

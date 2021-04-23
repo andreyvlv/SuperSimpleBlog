@@ -1,0 +1,25 @@
+﻿@model SuperSimpleBlog.ViewModels.RegisterViewModel
+<h2>Регистрация нового пользователя</h2>
+<div class="w-25">
+    <form method="post" asp-controller="Account" asp-action="Register">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label><br />
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label"></label><br />
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PasswordConfirm" class="control-label"></label><br />
+            <input asp-for="PasswordConfirm" class="form-control" />
+            <span asp-validation-for="PasswordConfirm"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Регистрация" class="btn btn-outline-info btn-sm" style="border-radius:unset;" />
+        </div>
+    </form>
+</div>

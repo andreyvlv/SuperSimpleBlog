@@ -1,0 +1,35 @@
+﻿@model SuperSimpleBlog.ViewModels.IndexViewModel
+@{
+    ViewBag.Title = "Все пользователи";
+}
+<section class="posts">
+    @foreach (var post in Model.Posts)
+    {
+        <div class="post">
+            <h2>@post.Title</h2>
+            <p style="font-size:small; color:dimgray">@post.Created.ToString("dd MMMM, yyyy")</p>
+            <div>@Html.Raw((post.Excerpt))</div>
+            <a asp-action="Details" asp-controller="Home"
+               asp-route-title="@post.Title" class="btn btn-outline-info btn-sm" style="border-radius:unset;">Подробнее</a>
+        </div>
+        <hr />
+    }
+</section>
+<div class="float-right" style="padding-bottom:75px !important;">
+    @if (Model.PageViewModel.HasPreviousPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+           class="btn btn-outline-info btn-sm" style="border-radius:unset;">
+            Позже
+        </a>
+    }
+    @if (Model.PageViewModel.HasNextPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+           class="btn btn-outline-info btn-sm" style="border-radius:unset;">
+            Ранее
+        </a>
+    }
+</div>

@@ -1,0 +1,30 @@
+﻿@model SuperSimpleBlog.Models.Post
+@{
+    ViewBag.Title = Model.Title;
+}
+<section class="post">
+    <h1>@Model.Title</h1>
+    <p style="font-size:small; color:dimgray">@Model.Updated.ToString("dd MMMM, yyyy")</p>
+    <hr />
+    <p class="content">
+        @Html.Raw((Model.Content))
+    </p>
+    <hr />
+    <a class="btn btn-outline-info btn-sm" style="border-radius:unset;" href="/">Назад</a>
+    <hr />
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function () {
+        this.page.url = "@Context.Request.Scheme://@Context.Request.Host@Context.Request.Path@Context.Request.QueryString";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "@Context.Request.Scheme://@Context.Request.Host@Context.Request.Path@Context.Request.QueryString"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://testblog-ddgwwlexct.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
